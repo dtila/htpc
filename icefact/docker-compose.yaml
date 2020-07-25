@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    container_name: icefact
+    image: .
+    restart: always
+    volumes:
+      - /c/mount/sql:/var/lib/mssql/data
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Express
+      - SA_PASSWORD=
+    ports:
+      - "1433:1433"
+    networks:
+      - sql-express
+    env_file:
+      - .env
